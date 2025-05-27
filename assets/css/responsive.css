@@ -286,7 +286,7 @@
     .article .container .content {
         font-size: 16px;
     }
-    .project .container .imgs {
+    .project .container .left-wrapper {
         grid-row: 1;
     }
     .project .container {

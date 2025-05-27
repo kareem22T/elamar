@@ -73,6 +73,12 @@
     .projects .container .project-item .img .head span img {
         width: 18px;
     }
+    .article .container h1 {
+        font-size: 24px;
+    }
+    .article .container .thumbnail {
+        height: 380px;
+    }
 }
 
 @media (max-width: 1280px) {
@@ -147,6 +153,12 @@
     }
     .projects .container {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .article .container h1 {
+        font-size: 22px;
+    }
+    .article .container .thumbnail {
+        height: 360px;
     }
 }
 
@@ -258,6 +270,15 @@
     }
     .faq .container {
         grid-template-columns: 1fr;
+    }
+    .article .container h1 {
+        font-size: 18px;
+    }
+    .article .container .thumbnail {
+        height: 300px;
+    }
+    .article .container .content {
+        font-size: 16px;
     }
 }
 
@@ -399,5 +420,18 @@
     }
     .projects .container .project-item .img {
         height: 220px;
+    }
+    .article .container .date {
+        font-size: 16px;
+        margin-top: .5rem;
+    }
+    .article .container .date img {
+        width: 24px;
+    }
+    .article .container .thumbnail {
+        height: 220px;
+    }
+    .article .container .content {
+        font-size: 12px;
     }
 }

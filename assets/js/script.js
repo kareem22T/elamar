@@ -117,3 +117,51 @@ document.addEventListener('DOMContentLoaded', function() {
         firstText.classList.add('active');
     }
 });
+
+// Image Gallery Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryImages = document.querySelectorAll('.img-container');
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
+    const modalBackdrop = document.querySelector('.modal-backdrop');
+
+    // Open modal when clicking on gallery images
+    galleryImages.forEach(function(container) {
+        container.addEventListener('click', function() {
+            const img = container.querySelector('img'); // Get the child <img>
+            const imgSrc = img.getAttribute('src');
+            const imgAlt = img.getAttribute('alt');
+
+            modalImage.setAttribute('src', imgSrc);
+            modalImage.setAttribute('alt', imgAlt);
+
+            imageModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close modal functions
+    function closeModal() {
+        imageModal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Close modal when clicking close button
+    modalClose.addEventListener('click', closeModal);
+
+    // Close modal when clicking backdrop
+    modalBackdrop.addEventListener('click', closeModal);
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    // Prevent modal from closing when clicking on the image
+    modalImage.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+});

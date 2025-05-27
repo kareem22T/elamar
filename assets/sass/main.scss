@@ -927,3 +927,215 @@ body {
         }
     }
 }
+
+.project {
+    padding: 3rem 0;
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        .content {
+            p {
+                font-size: 16px;
+                color: $main_color;
+                opacity: .8;
+            }
+            .options {
+                margin: 1rem 0;
+                p {
+                    display: grid;
+                    grid-template-columns: 120px 1fr 120px;
+                    gap: 2rem;
+                    .line {
+                        display: block;
+                        position: relative;
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            width: 100%;
+                            border-top: 1px dashed $main_color;
+                        }
+                    }
+                }
+            }
+            .location {
+                height: 300px;
+                width: 100%;
+                margin-top: 2rem;
+            }
+            .location-text {
+                color: #db3a3c;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                font-weight: bold;
+            }
+        }
+        .imgs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            .img-container {
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+                height: 260px;
+
+                &:hover {
+                    transform: scale(1.02);
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.3s ease;
+                }
+
+                .img-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.6);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+
+                    .overlay-content {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 0.5rem;
+                        color: white;
+                        text-align: center;
+
+                        .maximize-icon {
+                            width: 2rem;
+                            height: 2rem;
+                            stroke: white;
+                        }
+
+                        span {
+                            font-size: 0.9rem;
+                            font-weight: 500;
+                        }
+                    }
+                }
+
+                &:hover .img-overlay {
+                    opacity: 1;
+                }
+
+                &:nth-child(3) {
+                    grid-column: span 2;
+                }
+            }
+        }
+    }
+}
+
+// Image Modal Styles
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .modal-backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        cursor: pointer;
+    }
+
+    .modal-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 10001;
+
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+                stroke: white;
+            }
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.7);
+            }
+        }
+
+        #modalImage {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .project .imgs .img-container {
+        &:nth-child(3) {
+            grid-column: span 1;
+        }
+    }
+
+    .image-modal .modal-content {
+        padding: 1rem;
+
+        .modal-close {
+            top: 0.5rem;
+            right: 0.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+
+            svg {
+                width: 1.2rem;
+                height: 1.2rem;
+            }
+        }
+    }
+}

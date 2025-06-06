@@ -1752,3 +1752,45 @@ body {
 .lightbox[data-single-image="true"] .lightbox-nav {
     display: none;
 }
+
+                /* Animation styles for statistics */
+                .statistics-animated {
+                    opacity: 0;
+                    transform: translateY(30px);
+                    transition: all 0.8s ease-out;
+                }
+        
+                .statistics-animated.animate {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+        
+                .counter-number {
+                    display: inline-block;
+                    font-weight: bold;
+                    transition: all 0.3s ease;
+                }
+        
+                .counter-number.counting {
+                    color: #007bff;
+                    transform: scale(1.05);
+                }
+        
+                /* Pulse effect during counting */
+                @keyframes pulse {
+                    0% {
+                        transform: scale(1);
+                    }
+        
+                    50% {
+                        transform: scale(1.05);
+                    }
+        
+                    100% {
+                        transform: scale(1);
+                    }
+                }
+        
+                .counter-number.pulse {
+                    animation: pulse 0.6s ease-in-out;
+                }

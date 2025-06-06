@@ -62,10 +62,10 @@ var swiper = new Swiper(".heroSlider", {
         clickable: true,
     },
     loop: true,
-    // autoplay: {
-    //     delay: 4000,
-    //     disableOnInteraction: false,
-    // },
+    autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+    },
     speed: 800,
     effect: 'fade',
     fadeEffect: {
@@ -165,3 +165,94 @@ document.addEventListener('DOMContentLoaded', function() {
         e.stopPropagation();
     });
 });
+
+        // Statistics Counter Animation
+        class StatisticsCounter {
+            constructor() {
+                this.counters = document.querySelectorAll('.counter-number');
+                this.statisticsSection = document.getElementById('statisticsSection');
+                this.hasAnimated = false;
+                this.init();
+            }
+
+            init() {
+                // Create intersection observer to trigger animation when section is visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !this.hasAnimated) {
+                            this.animateSection();
+                            this.hasAnimated = true;
+                        }
+                    });
+                }, {
+                    threshold: 0.3 // Trigger when 30% of the section is visible
+                });
+
+                if (this.statisticsSection) {
+                    observer.observe(this.statisticsSection);
+                }
+            }
+
+            animateSection() {
+                // Add animation class to section
+                this.statisticsSection.classList.add('animate');
+                
+                // Start counter animations with staggered delays
+                this.counters.forEach((counter, index) => {
+                    setTimeout(() => {
+                        this.animateCounter(counter);
+                    }, index * 200); // 200ms delay between each counter
+                });
+            }
+
+            animateCounter(counter) {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const suffix = counter.getAttribute('data-suffix') || '';
+                const duration = 2000; // 2 seconds
+                const startTime = performance.now();
+                
+                // Add counting class for visual feedback
+                counter.classList.add('counting');
+                
+                const updateCounter = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Use easeOutCubic for smooth animation
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    const currentValue = Math.floor(easeProgress * target);
+                    
+                    counter.textContent = currentValue + suffix;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        // Animation complete
+                        counter.textContent = target + suffix;
+                        counter.classList.remove('counting');
+                        counter.classList.add('pulse');
+                        
+                        // Remove pulse class after animation
+                        setTimeout(() => {
+                            counter.classList.remove('pulse');
+                        }, 600);
+                    }
+                };
+                
+                requestAnimationFrame(updateCounter);
+            }
+        }
+
+        // Initialize the statistics counter when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new StatisticsCounter();
+        });
+
+        // Fallback: Initialize after a short delay if DOMContentLoaded already fired
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                new StatisticsCounter();
+            });
+        } else {
+            new StatisticsCounter();
+        }

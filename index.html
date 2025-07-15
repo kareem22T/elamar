@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,196 @@
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <title>El Amar</title>
+    <style>
+        /* Add these animation styles */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Hero animations */
+        .hero {
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+
+
+        .main-header {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        /* Section animations */
+        .news,
+        .statisics,
+        .gallery,
+        .blog {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-section {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* News item animations */
+        .news-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-news-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gallery animations */
+        .gallery-wrapper .img {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-gallery-item {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+
+        /* Blog item animations */
+        .blog-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-blog-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer animations */
+        .footer {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        /* Slide text animations */
+        .slide-text {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(20px);
+        }
+
+        .slide-text.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-text.slide-out-up {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .slide-text.slide-out-down {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .slide-text.slide-in-up {
+            opacity: 1;
+            transform: translateY(0);
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        .slide-text.slide-in-down {
+            opacity: 1;
+            transform: translateY(0);
+            animation: slideInDown 0.5s ease-out;
+        }
+
+        /* Statistics animation */
+        .statistics-animated {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .statistics-animated.animate {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .counter-number.counting {
+            color: #f8a51b;
+            /* Highlight color during counting */
+        }
+
+        .counter-number.pulse {
+            animation: pulse 0.5s ease-out;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
+
 <body>
     <!-- Top Header -->
     <div class="top-header">
@@ -30,7 +220,7 @@
                 <span>
                     <img src="./assets/imgs/map.svg">
                     <div class="hide-sm">
-                     ممر بهلر - ش قصر النيل. القاهرة، مصر
+                        ممر بهلر - ش قصر النيل. القاهرة، مصر
                     </div>
                 </span>
             </div>
@@ -89,7 +279,7 @@
                         <li><a href="./contact.html">اتصل بنا</a></li>
                     </ul>
                 </nav>
-        
+
                 <div class="mobile-social-links">
                     <a href="#">
                         <img src="./assets/imgs/facebook.svg" alt="">
@@ -114,6 +304,7 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <img src="./assets/imgs/slide-1.png" alt="Slide 1">
+                    <video src="" autoplay loop></video>
                 </div>
                 <div class="swiper-slide">
                     <img src="./assets/imgs/slide-2.jpg" alt="Slide 2">
@@ -146,7 +337,10 @@
                 </h1>
             </div>
             <p class="section-description">
-                منذ بداية نشاطنا اقمنا مشاريع سكنيه وتجارية وسياحيه في ارقي المواقع وتتضمن اعمالنا 13 منتجع مصيفي في اجمل مواقع الساحل الشمالي و 56 برج وعماره سكنيه في اهم المواقع بالقاهرة والاسكندرية يتركز نشاط شركاتنا فى التطوير العقاري و السياحي وهدفنا الأول دائماً هو تلبية احتياجات عملاؤنا وتقديم احدث المشروعات لهم في أرقى المواقع بمستوى متميز يسعد عملاؤنا ويحقق رغباتهم
+                منذ بداية نشاطنا اقمنا مشاريع سكنيه وتجارية وسياحيه في ارقي المواقع وتتضمن اعمالنا 13 منتجع مصيفي في
+                اجمل مواقع الساحل الشمالي و 56 برج وعماره سكنيه في اهم المواقع بالقاهرة والاسكندرية يتركز نشاط شركاتنا
+                فى التطوير العقاري و السياحي وهدفنا الأول دائماً هو تلبية احتياجات عملاؤنا وتقديم احدث المشروعات لهم في
+                أرقى المواقع بمستوى متميز يسعد عملاؤنا ويحقق رغباتهم
             </p>
             <div class="news-wrapper">
                 <div class="news-item">
@@ -156,7 +350,9 @@
                     <div class="content">
                         <h1>مارينــا صـــن شايــن</h1>
                         <p>
-                            قرية مارينا صن شاين الساحل الشمالي هي عبارة عن منتجع سياحي متكامل، يضم مساحات خضراء واسعة و لاند سكيب رائع وتحتوي على أكبر كريستال لاجونز و يوجد بها خدمات ترفيهية رائعة تساعد على الاستمتاع والاستجمام
+                            قرية مارينا صن شاين الساحل الشمالي هي عبارة عن منتجع سياحي متكامل، يضم مساحات خضراء واسعة و
+                            لاند سكيب رائع وتحتوي على أكبر كريستال لاجونز و يوجد بها خدمات ترفيهية رائعة تساعد على
+                            الاستمتاع والاستجمام
                         </p>
                         <a href="">
                             المزيد عن المشروع
@@ -171,7 +367,9 @@
                     <div class="content">
                         <h1>مارينــا صـــن شايــن</h1>
                         <p>
-                            قرية مارينا صن شاين الساحل الشمالي هي عبارة عن منتجع سياحي متكامل، يضم مساحات خضراء واسعة و لاند سكيب رائع وتحتوي على أكبر كريستال لاجونز و يوجد بها خدمات ترفيهية رائعة تساعد على الاستمتاع والاستجمام
+                            قرية مارينا صن شاين الساحل الشمالي هي عبارة عن منتجع سياحي متكامل، يضم مساحات خضراء واسعة و
+                            لاند سكيب رائع وتحتوي على أكبر كريستال لاجونز و يوجد بها خدمات ترفيهية رائعة تساعد على
+                            الاستمتاع والاستجمام
                         </p>
                         <a href="">
                             المزيد عن المشروع
@@ -186,7 +384,9 @@
                     <div class="content">
                         <h1>مارينــا صـــن شايــن</h1>
                         <p>
-                            قرية مارينا صن شاين الساحل الشمالي هي عبارة عن منتجع سياحي متكامل، يضم مساحات خضراء واسعة و لاند سكيب رائع وتحتوي على أكبر كريستال لاجونز و يوجد بها خدمات ترفيهية رائعة تساعد على الاستمتاع والاستجمام
+                            قرية مارينا صن شاين الساحل الشمالي هي عبارة عن منتجع سياحي متكامل، يضم مساحات خضراء واسعة و
+                            لاند سكيب رائع وتحتوي على أكبر كريستال لاجونز و يوجد بها خدمات ترفيهية رائعة تساعد على
+                            الاستمتاع والاستجمام
                         </p>
                         <a href="">
                             المزيد عن المشروع
@@ -201,7 +401,9 @@
                     <div class="content">
                         <h1>مارينــا صـــن شايــن</h1>
                         <p>
-                            قرية مارينا صن شاين الساحل الشمالي هي عبارة عن منتجع سياحي متكامل، يضم مساحات خضراء واسعة و لاند سكيب رائع وتحتوي على أكبر كريستال لاجونز و يوجد بها خدمات ترفيهية رائعة تساعد على الاستمتاع والاستجمام
+                            قرية مارينا صن شاين الساحل الشمالي هي عبارة عن منتجع سياحي متكامل، يضم مساحات خضراء واسعة و
+                            لاند سكيب رائع وتحتوي على أكبر كريستال لاجونز و يوجد بها خدمات ترفيهية رائعة تساعد على
+                            الاستمتاع والاستجمام
                         </p>
                         <a href="">
                             المزيد عن المشروع
@@ -216,7 +418,9 @@
                     <div class="content">
                         <h1>مارينــا صـــن شايــن</h1>
                         <p>
-                            قرية مارينا صن شاين الساحل الشمالي هي عبارة عن منتجع سياحي متكامل، يضم مساحات خضراء واسعة و لاند سكيب رائع وتحتوي على أكبر كريستال لاجونز و يوجد بها خدمات ترفيهية رائعة تساعد على الاستمتاع والاستجمام
+                            قرية مارينا صن شاين الساحل الشمالي هي عبارة عن منتجع سياحي متكامل، يضم مساحات خضراء واسعة و
+                            لاند سكيب رائع وتحتوي على أكبر كريستال لاجونز و يوجد بها خدمات ترفيهية رائعة تساعد على
+                            الاستمتاع والاستجمام
                         </p>
                         <a href="">
                             المزيد عن المشروع
@@ -242,7 +446,8 @@
                     <span>العمار جروب</span> .. خبراء الساحل
                 </h1>
                 <p>
-                    بدأت شركاتنا نشاطها في عام 1986 وتعتبر من اوائل الشركات في مجال التنمية والتطوير العقارى في مصر وأقمنا
+                    بدأت شركاتنا نشاطها في عام 1986 وتعتبر من اوائل الشركات في مجال التنمية والتطوير العقارى في مصر
+                    وأقمنا
                     13 منتجع بالساحل
                     الشمالي بأعلى مستويات الفخامة والتميز و 56 برج وعماره سكنية في اهم المواقع بالقاهرة والاسكندرية وتم
                     تسليمها جميعاً
@@ -371,14 +576,14 @@
                     <p class="office-phone">+20239391799 • +20239394699</p>
                     <p class="office-hours">من السبت للخميس من 9:00 صباحاً حتى 04:00 مساءً</p>
                 </div>
-                
+
                 <div class="office">
                     <h3 class="office-title">المكتب الرئيسي</h3>
                     <p class="office-address">مصر الجديدة - النزهة الجديدة - القاهرة - مصر</p>
                     <p class="office-phone">+20239391799 • +20239394699</p>
                     <p class="office-hours">من السبت للخميس من 9:00 صباحاً حتى 04:00 مساءً</p>
                 </div>
-                                
+
                 <!-- Contact Section -->
                 <div class="footer-section contact-section">
                     <div class="contact-icon">
@@ -388,7 +593,7 @@
                     <h3 class="contact-title">الخط الساخن</h3>
                 </div>
             </div>
-    
+
         </div>
         <!-- Copyright Section -->
         <div class="footer-bottom">
@@ -399,6 +604,307 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./assets/js/gallery.js"></script>
-    <script src="./assets/js/script.js"></script>
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const body = document.body;
+
+        mobileMenuBtn.addEventListener('click', function () {
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        });
+
+        // Close menu when clicking on overlay
+        mobileMenuOverlay.addEventListener('click', function (e) {
+            if (e.target === mobileMenuOverlay) {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                body.classList.remove('menu-open');
+            }
+        });
+
+        // Close menu when clicking on menu links
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                body.classList.remove('menu-open');
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 1280) {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                body.classList.remove('menu-open');
+            }
+        });
+
+        const mobileNavItems = document.querySelectorAll('.mobile-menu-overlay *');
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', function () {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                body.classList.remove('menu-open');
+            });
+        });
+
+        // Initialize Swiper with smooth text transitions
+        var swiper = new Swiper(".heroSlider", {
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            speed: 800,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            on: {
+                slideChange: function () {
+                    updateSlideText(this.realIndex);
+                }
+            }
+        });
+
+        // Function to update slide text with smooth transitions
+        function updateSlideText(activeIndex) {
+            const allTexts = document.querySelectorAll('.slide-text');
+            const currentActive = document.querySelector('.slide-text.active');
+            const newActive = document.querySelector(`[data-slide="${activeIndex}"]`);
+
+            if (currentActive && newActive && currentActive !== newActive) {
+                // Remove active class from current text
+                currentActive.classList.remove('active');
+
+                // Add slide out animation
+                currentActive.classList.add('slide-out-up');
+
+                // After a short delay, show the new text
+                setTimeout(() => {
+                    // Hide all texts
+                    allTexts.forEach(text => {
+                        text.classList.remove('active', 'slide-out-up', 'slide-out-down', 'slide-in-up', 'slide-in-down');
+                    });
+
+                    // Show new text with slide in animation
+                    newActive.classList.add('slide-in-down');
+
+                    // Make it active after animation starts
+                    setTimeout(() => {
+                        newActive.classList.remove('slide-in-down');
+                        newActive.classList.add('active');
+                    }, 50);
+                }, 250);
+            }
+        }
+
+        // Initialize first slide text
+        document.addEventListener('DOMContentLoaded', function () {
+            const firstText = document.querySelector('[data-slide="0"]');
+            if (firstText) {
+                firstText.classList.add('active');
+            }
+        });
+
+        // Image Gallery Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const galleryImages = document.querySelectorAll('.img-container');
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalClose = document.getElementById('modalClose');
+            const modalBackdrop = document.querySelector('.modal-backdrop');
+
+            // Open modal when clicking on gallery images
+            galleryImages.forEach(function (container) {
+                container.addEventListener('click', function () {
+                    const img = container.querySelector('img'); // Get the child <img>
+                    const imgSrc = img.getAttribute('src');
+                    const imgAlt = img.getAttribute('alt');
+
+                    modalImage.setAttribute('src', imgSrc);
+                    modalImage.setAttribute('alt', imgAlt);
+
+                    imageModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Close modal functions
+            function closeModal() {
+                imageModal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+
+            // Close modal when clicking close button
+            modalClose.addEventListener('click', closeModal);
+
+            // Close modal when clicking backdrop
+            modalBackdrop.addEventListener('click', closeModal);
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
+            // Prevent modal from closing when clicking on the image
+            modalImage.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+        });
+
+        // Statistics Counter Animation
+        class StatisticsCounter {
+            constructor() {
+                this.counters = document.querySelectorAll('.counter-number');
+                this.statisticsSection = document.getElementById('statisticsSection');
+                this.hasAnimated = false;
+                this.init();
+            }
+
+            init() {
+                // Create intersection observer to trigger animation when section is visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !this.hasAnimated) {
+                            this.animateSection();
+                            this.hasAnimated = true;
+                        }
+                    });
+                }, {
+                    threshold: 0.3 // Trigger when 30% of the section is visible
+                });
+
+                if (this.statisticsSection) {
+                    observer.observe(this.statisticsSection);
+                }
+            }
+
+            animateSection() {
+                // Add animation class to section
+                this.statisticsSection.classList.add('animate');
+
+                // Start counter animations with staggered delays
+                this.counters.forEach((counter, index) => {
+                    setTimeout(() => {
+                        this.animateCounter(counter);
+                    }, index * 200); // 200ms delay between each counter
+                });
+            }
+
+            animateCounter(counter) {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const suffix = counter.getAttribute('data-suffix') || '';
+                const duration = 2000; // 2 seconds
+                const startTime = performance.now();
+
+                // Add counting class for visual feedback
+                counter.classList.add('counting');
+
+                const updateCounter = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+
+                    // Use easeOutCubic for smooth animation
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    const currentValue = Math.floor(easeProgress * target);
+
+                    counter.textContent = currentValue + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        // Animation complete
+                        counter.textContent = target + suffix;
+                        counter.classList.remove('counting');
+                        counter.classList.add('pulse');
+
+                        // Remove pulse class after animation
+                        setTimeout(() => {
+                            counter.classList.remove('pulse');
+                        }, 600);
+                    }
+                };
+
+                requestAnimationFrame(updateCounter);
+            }
+        }
+
+        // Initialize the statistics counter when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new StatisticsCounter();
+
+            // Animate sections when they come into view
+            const animateOnScroll = () => {
+                const sections = document.querySelectorAll('.news, .statisics, .gallery, .blog');
+
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+
+                    if (sectionTop < windowHeight * 0.75) {
+                        section.classList.add('animate-section');
+
+                        // Animate news items with staggered delays
+                        if (section.classList.contains('news')) {
+                            const newsItems = section.querySelectorAll('.news-item');
+                            newsItems.forEach((item, index) => {
+                                setTimeout(() => {
+                                    item.classList.add('animate-news-item');
+                                }, index * 150);
+                            });
+                        }
+
+                        // Animate gallery items with staggered delays
+                        if (section.classList.contains('gallery')) {
+                            const galleryItems = section.querySelectorAll('.gallery-wrapper .img');
+                            galleryItems.forEach((item, index) => {
+                                setTimeout(() => {
+                                    item.classList.add('animate-gallery-item');
+                                }, index * 100);
+                            });
+                        }
+
+                        // Animate blog items with staggered delays
+                        if (section.classList.contains('blog')) {
+                            const blogItems = section.querySelectorAll('.blog-item');
+                            blogItems.forEach((item, index) => {
+                                setTimeout(() => {
+                                    item.classList.add('animate-blog-item');
+                                }, index * 150);
+                            });
+                        }
+                    }
+                });
+            };
+
+            // Run once on load
+            animateOnScroll();
+
+            // Run on scroll
+            window.addEventListener('scroll', animateOnScroll);
+        });
+
+        // Fallback: Initialize after a short delay if DOMContentLoaded already fired
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                new StatisticsCounter();
+            });
+        } else {
+            new StatisticsCounter();
+        }
+    </script>
 </body>
+
 </html>
